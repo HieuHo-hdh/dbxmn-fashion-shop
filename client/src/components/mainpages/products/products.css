@@ -26,7 +26,7 @@
 }
 .delete-all button{
     border: 1px solid crimson;
-    padding: 10px 25px;
+    padding: 0px 25px;
     color: crimson;
     text-transform: uppercase;
 }
@@ -62,4 +62,16 @@
     margin-bottom: 20px;
     border: 1px solid #555;
     text-transform: capitalize;
+}
+
+.products-loading {
+    width: 100%;
+    position: relative;
+    min-height: calc(100vh - 206px);
+    align-items: center;
+    display: flex;
+}
+
+.products-loading .ant-spin{
+    width: 100%;
 }

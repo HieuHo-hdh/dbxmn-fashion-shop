@@ -123,7 +123,20 @@ const userCtrl = {
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
-    }
+    },
+    getAllUsers: async (req, res) =>{
+        try {
+            const users = await Users.find()
+            const usersData = users
+            res.json({
+                status: 'success',
+                result: usersData.length,
+                products: usersData
+            })
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
  }
 
 

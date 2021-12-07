@@ -124,10 +124,11 @@ function CreateProduct() {
     return (
         <div className="create_product">
             <div className="upload">
-                <input type="file" name="file" id="file_up" onChange={handleUpload}/>
+                <input type="file" name="file" id="file_up" onChange={handleUpload} style={loading ? {display: 'none'}: {}}/>
                 {
-                    loading ? <div id="file_img"><Loading /></div>
-
+                    // loading ? <div id="file_img"><Loading /></div>
+                    loading ?
+                    <Loading className='create-product-loading' loading={loading}/>
                     :<div id="file_img" style={styleUpload}>
                         <img src={images ? images.url : ''} alt=""/>
                         <span onClick={handleDestroy}>X</span>

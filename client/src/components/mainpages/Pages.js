@@ -7,9 +7,12 @@ import Register from './auth/Register'
 import OrderHistory from './history/OrderHistory'
 import OrderDetails from './history/OrderDetails'
 import Cart from './cart/Cart'
-import NotFound from './utils/not_found/NotFound'
+// import NotFound from './utils/not_found/NotFound'
+import NotFound from './utils/loading/Loading'
+
 import Categories from './categories/Categories'
 import CreateProduct from './createProduct/CreateProduct'
+import UserManagement from './userManagement/UserManagement'
 
 import {GlobalState} from '../../GlobalState'
 
@@ -29,6 +32,9 @@ function Pages() {
             <Route path="/register" exact component={isLogged ? NotFound : Register} />
 
             <Route path="/category" exact component={isAdmin ? Categories : NotFound} />
+            
+            <Route path="/manage-users" exact component={isAdmin ? UserManagement : NotFound} />
+
             <Route path="/create_product" exact component={isAdmin ? CreateProduct : NotFound} />
             <Route path="/edit_product/:id" exact component={isAdmin ? CreateProduct : NotFound} />
 

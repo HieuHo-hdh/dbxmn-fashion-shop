@@ -85,3 +85,13 @@
     letter-spacing: 2px;
     font-weight: 700;
 }
+
+.create-product-loading{
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+.create-product-loading .ant-spin{
+    width: 100%;
+}

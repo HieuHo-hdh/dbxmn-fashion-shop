@@ -6,6 +6,7 @@ function UserAPI(token) {
     const [isAdmin, setIsAdmin] = useState(false)
     const [cart, setCart] = useState([])
     const [history, setHistory] = useState([])
+    const [allUsers, setAllUsers] = useState([])
 
     useEffect(() =>{
         if(token){
@@ -30,7 +31,23 @@ function UserAPI(token) {
         }
     },[token])
 
-    
+    useEffect(()=> {
+        if (isAdmin) 
+        {
+            const getAllUsers = async () =>{
+                try {
+                    const res = await axios.get('/user/getAllUsers', {
+                        headers: {Authorization: token}
+                    })
+                    if (res.data && res.data?.status === 'success')
+                        setAllUsers(res.data.products)
+                } catch (err) {
+                    alert(err.response.data.msg)
+                }
+            }
+            getAllUsers()
+        }
+    }, [isAdmin])
 
     const addCart = async (product) => {
         if(!isLogged) return alert("Please login to continue buying")
@@ -55,6 +72,7 @@ function UserAPI(token) {
         isLogged: [isLogged, setIsLogged],
         isAdmin: [isAdmin, setIsAdmin],
         cart: [cart, setCart],
+        allUsers: [allUsers, setAllUsers],
         addCart: addCart,
         history: [history, setHistory]
     }
